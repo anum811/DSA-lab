@@ -1,0 +1,57 @@
+#include <iostream> 
+using namespace std; 
+struct Node { 
+int data; 
+Node* next; 
+Node* prev; 
+}; 
+void print_data(Node* head) { 
+if (head == NULL) { 
+cout << "Linked list is empty" << endl; 
+return; 
+} 
+Node* ptr = head; 
+while (ptr != NULL) { 
+cout << ptr->data << " "; 
+ptr = ptr->next; 
+} 
+cout << endl; 
+} 
+Node* del_at_start(Node* head) { 
+if (head == NULL) { 
+cout << "The linked list is empty" << endl; 
+return head; 
+} 
+Node* temp = head; 
+head = head->next;   
+NULL ;
+if (head != NULL) { 
+head->prev = NULL; 
+} 
+delete temp;   
+return head; 
+} 
+int main() { 
+Node* head = new Node; 
+Node* second = new Node; 
+Node* third = new Node; 
+cout << "Enter value for 1st Node  "; 
+cin >> head->data; 
+head->prev = NULL; 
+head->next = second; 
+cout << "Enter value for 2nd Node : "; 
+cin >> second->data; 
+second->prev = head; 
+second->next = third; 
+cout << "Enter value for 3rd Node : "; 
+cin >> third->data; 
+third->prev = second; 
+third->next = NULL; 
+cout << " Linked List: "; 
+print_data(head); 
+
+head = del_at_start(head); 
+cout << "Linked List after deletion of 1st node: "; 
+print_data(head); 
+return 0; 
+}
